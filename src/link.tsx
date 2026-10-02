@@ -102,16 +102,16 @@ export default function Link() {
             <p className="text-[10px] text-red-700 mt-1">{messageError}</p>
           )}
           <button
-            className="w-[24rem] rounded-3xl bg-linear-to-b from-orange-500 to-red-600 p-2.5 text-[1.2rem] text-white mt-4 font-bold text-center lg:w-[30%] "
+            className="w-[24rem] rounded-3xl bg-linear-to-b from-orange-500 to-red-600 p-2.5 text-[1.2rem] text-white mt-4 font-bold text-center lg:w-[30%] cursor-pointer "
             type="submit"
             disabled={sendingMessage ? true : false}
           >
             {sendingMessage ? (
-              <span
-                aria-hidden="true"
-                className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
-              />
-            ) : (
+                  <span
+                    aria-hidden="true"
+                    className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
+                  />
+                ) : (
               "Send Message"
             )}
           </button>
