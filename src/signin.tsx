@@ -230,8 +230,8 @@ transition:Bounce,
 
         {/* Footer note for terms and privacy agreement */}
         <footer className="text-center text-balance p-3 text-[17px]">
-          By using Voxa, you agree to our <Link to="/">Terms of service</Link> 
-          and <Link to="">privacy policy</Link>
+          By using Voxa, you agree to our Terms of service                                      
+              and privacy policy
         </footer>
       </div>
     </div>
