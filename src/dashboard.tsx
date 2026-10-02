@@ -161,6 +161,11 @@ export default function Dashboard() {
     }
   }
   async function deleteAllMessage() {
+    if (messages.length === 0) {
+      setDeleteDialog(null);
+      return;
+    }
+
     const token = localStorage.getItem("voxaToken");
     try {
       const response = await fetch(
@@ -232,7 +237,9 @@ export default function Dashboard() {
               <button
                 type="button"
                 aria-label="Delete all messages"
-                className="cursor-pointer rounded-[20px] bg-gray-100 p-1 transition-transform duration-200 ease-out hover:scale-105 active:scale-90 active:rotate-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 motion-reduce:transition-none"
+                title={messages.length === 0 ? "No messages to delete" : undefined}
+                disabled={messages.length === 0}
+                className="cursor-pointer rounded-[20px] bg-gray-100 p-1 transition-transform duration-200 ease-out hover:scale-105 active:scale-90 active:rotate-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 motion-reduce:transition-none disabled:cursor-not-allowed disabled:opacity-50 disabled:hover:scale-100 disabled:active:scale-100 disabled:active:rotate-0"
                 onClick={() => setDeleteDialog("all")}
               >
                 <Trash size="32" color="#f47379" variant="TwoTone" />
