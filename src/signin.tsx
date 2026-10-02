@@ -210,7 +210,7 @@ export default function SignIn() {
               </div>
               <button
                 type="submit"
-                className="mt-4 flex w-full items-center justify-center gap-2.5 rounded-3xl bg-linear-to-b from-orange-500 to-red-500 p-2.5 text-[1.2rem] text-white"
+                className="mt-4 flex w-full items-center justify-center gap-2.5 rounded-3xl bg-linear-to-b from-orange-500 to-red-500 p-2.5 text-[1.2rem] text-white cursor-pointer"
                 disabled={loginState}
               >
                 {loginState ? (
