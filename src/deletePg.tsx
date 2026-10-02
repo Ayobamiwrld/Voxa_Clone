@@ -27,7 +27,7 @@ export default function DeletePg(props: DeletePgProps) {
             Cancel Action
           </button>
           <button
-            className="bg-red-600 p-3 rounded-4xl text-white"
+            className="bg-red-600 p-3 rounded-4xl text-white cursor-pointer"
             onClick={props.onConfirm}
           >
             {props.confirmLabel}
