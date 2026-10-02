@@ -102,18 +102,17 @@ export default function Link() {
             <p className="text-[10px] text-red-700 mt-1">{messageError}</p>
           )}
           <button
-            className="w-[24rem] rounded-3xl bg-linear-to-b from-orange-500 to-red-600 p-2.5 text-[1.2rem] text-white mt-4 font-bold text-center lg:w-[30%] cursor-pointer "
+            className="mt-4 flex w-[24rem] items-center justify-center gap-2 rounded-3xl bg-linear-to-b from-orange-500 to-red-600 p-2.5 text-center text-[1.2rem] font-bold text-white disabled:cursor-wait lg:w-[30%]"
             type="submit"
-            disabled={sendingMessage ? true : false}
+            disabled={sendingMessage}
+            aria-busy={sendingMessage}
           >
             {sendingMessage ? (
-                  <span
-                    aria-hidden="true"
-                    className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
-                  />
-                ) : (
-              "Send Message"
-            )}
+              <span
+                aria-hidden="true"
+                className="inline-block h-5 w-5 shrink-0 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
+              />
+            ) : "Send Message"}
           </button>
         </form>
       </div>
