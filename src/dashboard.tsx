@@ -386,7 +386,7 @@ export default function Dashboard() {
                     <p className="text-gray-400">Share Link to Friends</p>
                   </div>
                   <button
-                    className="w-40 cursor-pointer rounded-4xl bg-linear-to-b from-orange-500 to-red-500 px-4 py-2 text-[16px] text-white cursor-pointer"
+                    className="w-40 cursor-pointer rounded-4xl bg-linear-to-b from-orange-500 to-red-500 px-4 py-2 text-[16px] text-white "
                     onClick={handleCopy}
                   >
                     Copy Link
