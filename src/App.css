@@ -1,0 +1,4 @@
+.logo-outline {
+	filter: drop-shadow(1px 0 white) drop-shadow(-1px 0 white)
+		drop-shadow(0 1px white) drop-shadow(0 -1px white);
+}
