@@ -255,7 +255,7 @@ export default function SignUp() {
           ""
         ) : (
           <footer className="text-center text-balance p-3 text-[17px]">
-            By using Voxa, you agree to our <Link to="/">Terms of service</Link>
+            By using Voxa, you agree to our <Link to="/">Terms of service</Link> 
             and <Link to="">privacy policy</Link>
           </footer>
         )}
