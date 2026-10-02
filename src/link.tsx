@@ -5,31 +5,29 @@ import { toast } from "react-toastify";
 import { useParams } from "react-router";
 import { useNavigate } from "react-router";
 
-
 export default function Link() {
   const route = useNavigate();
   const [message, setMessage] = useState("");
   const [messageError, setMessageError] = useState("");
   const { username } = useParams();
-  const [sendingMessage, setSendingMessage] = useState(false)
+  const [sendingMessage, setSendingMessage] = useState(false);
   function hanldeSendMessage(event: { preventDefault: () => void }) {
     event.preventDefault();
     if (!message) {
       setMessageError("");
-      toast.warn("message can not be empty")
+      toast.warn("message can not be empty");
       return;
     } else {
       setMessageError("");
-
     }
-     sendMessage();
+    sendMessage();
   }
 
   async function sendMessage() {
     setSendingMessage(true);
     try {
       const resp = await fetch(
-        "http://localhost:8080/message/send/text-message",
+        "https://voxa-golang-server-547m.onrender.com/message/send/text-message",
         {
           method: "POST",
           headers: {
@@ -48,8 +46,8 @@ export default function Link() {
       toast.warn("message can not be empty");
     } finally {
       console.log("done");
-      setSendingMessage(false)
-      toast.success("Message sent")
+      setSendingMessage(false);
+      toast.success("Message sent");
     }
   }
   return (
@@ -106,12 +104,16 @@ export default function Link() {
           <button
             className="w-[24rem] rounded-3xl bg-linear-to-b from-orange-500 to-red-600 p-2.5 text-[1.2rem] text-white mt-4 font-bold text-center lg:w-[30%] "
             type="submit"
-            disabled={sendingMessage ? true : false } 
+            disabled={sendingMessage ? true : false}
           >
-           {sendingMessage  ? (<span
-                    aria-hidden="true"
-                    className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
-                  />) : "Send Message" }
+            {sendingMessage ? (
+              <span
+                aria-hidden="true"
+                className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
+              />
+            ) : (
+              "Send Message"
+            )}
           </button>
         </form>
       </div>

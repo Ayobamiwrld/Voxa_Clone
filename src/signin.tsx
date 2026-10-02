@@ -7,11 +7,9 @@ import { useState } from "react";
 import { Link } from "react-router";
 import { IoEyeOutline } from "react-icons/io5";
 import { IoEyeOffOutline } from "react-icons/io5";
-import {Bounce, toast } from 'react-toastify';
+import { Bounce, toast } from "react-toastify";
 import useAuthStore from "./authStore";
 import { useNavigate } from "react-router";
-  
-
 
 export default function SignIn() {
   const [userName, setUserName] = useState("");
@@ -20,24 +18,27 @@ export default function SignIn() {
   const [passwordError, setPasswordError] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loginState, setLoginState] = useState(false);
-  const{login} = useAuthStore();
+  const { login } = useAuthStore();
   const route = useNavigate();
   async function logIn() {
     setLoginState(true);
     try {
-      const resp = await fetch("http://localhost:8080/account/login", {
-        method: "POST",
-        headers: {
-          "content-type": "application/JSON",
+      const resp = await fetch(
+        "https://voxa-golang-server-547m.onrender.com/account/login",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/JSON",
+          },
+          body: JSON.stringify({ username: userName, password }),
         },
-        body: JSON.stringify({ username: userName, password }),
-      });
+      );
       const userData = await resp.json();
       const authToken = userData.data.token;
       localStorage.setItem("voxaToken", authToken);
       console.log(userData);
       const response = await fetch(
-        "http://localhost:8080/account/current-user",
+        "https://voxa-golang-server-547m.onrender.com/account/current-user",
         {
           method: "GET",
           headers: {
@@ -47,25 +48,25 @@ export default function SignIn() {
         },
       );
       const userInfo = await response.json();
-      console.log("CURRENT USER:", userInfo.data)
-      login(userInfo.data)
-      toast.success("Login successfull",{
-position: "top-center",
-autoClose: 5000,
-hideProgressBar: false,
-closeOnClick: false,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "light",
-transition:Bounce,
-    })
-        // toast.warn("No try am again")
-        route("/dashboard")
+      console.log("CURRENT USER:", userInfo.data);
+      login(userInfo.data);
+      toast.success("Login successfull", {
+        position: "top-center",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: false,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        transition: Bounce,
+      });
+      // toast.warn("No try am again")
+      route("/dashboard");
       return userInfo;
     } catch (error) {
-      console.log(error); 
-    toast.error("Try again")
+      console.log(error);
+      toast.error("Try again");
     } finally {
       setLoginState(false);
     }
@@ -212,11 +213,14 @@ transition:Bounce,
                 className="mt-4 flex w-full items-center justify-center gap-2.5 rounded-3xl bg-linear-to-b from-orange-500 to-red-500 p-2.5 text-[1.2rem] text-white"
                 disabled={loginState}
               >
-              
-                {loginState ? ( <span
+                {loginState ? (
+                  <span
                     aria-hidden="true"
                     className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
-                  />): "Sign in"}
+                  />
+                ) : (
+                  "Sign in"
+                )}
               </button>
             </form>
             <div className="flex flex-row gap-4 justify-center">
@@ -230,8 +234,7 @@ transition:Bounce,
 
         {/* Footer note for terms and privacy agreement */}
         <footer className="text-center text-balance p-3 text-[17px]">
-          By using Voxa, you agree to our Terms of service                                      
-              and privacy policy
+          By using Voxa, you agree to our Terms of service and privacy policy
         </footer>
       </div>
     </div>

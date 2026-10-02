@@ -76,7 +76,7 @@ export default function Dashboard() {
 
     try {
       const response = await fetch(
-        "http://localhost:8080/account/current-user",
+        "https://voxa-golang-server-547m.onrender.com/account/current-user",
         {
           method: "GET",
           headers: {
@@ -92,13 +92,16 @@ export default function Dashboard() {
 
       const userInfo = await response.json();
       login(userInfo.data);
-      const resp = await fetch("http://localhost:8080/message/get-messages", {
-        method: "GET",
-        headers: {
-          "content-type": "application/json",
-          Authorization: `Bearer ${authToken}`,
+      const resp = await fetch(
+        "https://voxa-golang-server-547m.onrender.com/message/get-messages",
+        {
+          method: "GET",
+          headers: {
+            "content-type": "application/json",
+            Authorization: `Bearer ${authToken}`,
+          },
         },
-      });
+      );
       console.log(resp);
       const data = await resp.json();
       setMessages(data.data);
@@ -135,7 +138,7 @@ export default function Dashboard() {
 
     try {
       const response = await fetch(
-        `http://localhost:8080/message/delete-message/${id}`,
+        `https://voxa-golang-server-547m.onrender.com/message/delete-message/${id}`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
@@ -161,7 +164,7 @@ export default function Dashboard() {
     const token = localStorage.getItem("voxaToken");
     try {
       const response = await fetch(
-        `http://localhost:8080/message/delete-all-messages`,
+        `https://voxa-golang-server-547m.onrender.com/message/delete-all-messages`,
         {
           method: "DELETE",
           headers: { Authorization: `Bearer ${token}` },
@@ -224,9 +227,7 @@ export default function Dashboard() {
                 className="rounded-[20px] bg-gray-100 p-1 transition-transform duration-200 ease-out hover:scale-105 active:scale-90 active:-rotate-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 motion-reduce:transition-none"
                 onClick={handleCopy}
               >
-                <Link1
-                  className="h-9 w-9 text-[#a88d7f]"
-                />
+                <Link1 className="h-9 w-9 text-[#a88d7f]" />
               </button>
               <button
                 type="button"
@@ -234,11 +235,7 @@ export default function Dashboard() {
                 className="cursor-pointer rounded-[20px] bg-gray-100 p-1 transition-transform duration-200 ease-out hover:scale-105 active:scale-90 active:rotate-12 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-red-400 motion-reduce:transition-none"
                 onClick={() => setDeleteDialog("all")}
               >
-                <Trash
-                  size="32"
-                  color="#f47379"
-                  variant="TwoTone"
-                />
+                <Trash size="32" color="#f47379" variant="TwoTone" />
               </button>
               <DropdownMenu>
                 <DropdownMenuTrigger className="group relative inline-flex h-12 w-12 items-center justify-center rounded-[20px] bg-[#ffcc00] cursor-pointer transition-transform duration-200 ease-out hover:scale-105 active:scale-95 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-orange-500 motion-reduce:transition-none">
@@ -255,7 +252,6 @@ export default function Dashboard() {
                   <DropdownMenuGroup>
                     <DropdownMenuLabel className="text-[15px] font-bold text-black capitalize text-center text-balance">
                       {currentUser?.username}
-                     
                     </DropdownMenuLabel>
                   </DropdownMenuGroup>
                   <DropdownMenuItem
@@ -263,7 +259,7 @@ export default function Dashboard() {
                     className="text-red-500 flex flex-row justify-evenly items-center"
                   >
                     Log out
-                     <Logout size='20' variant="TwoTone" color="red"/>
+                    <Logout size="20" variant="TwoTone" color="red" />
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
@@ -391,66 +387,66 @@ export default function Dashboard() {
                 </>
               ) : (
                 messages?.map((message) => (
-                <div
-                  key={message.id}
-                  className="flex  w-full items-center justify-between pl-2 pr-2 pt-0.5 pb-0.5"
-                  onClick={() => {
-                    setSelectedMessage(message);
-                    setIsModalOpen(true);
-                    setClickButton(true);
-                  }}
-                >
-                  <div className="flex flex-1 items-center gap-3">
-                    <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#fff3ec] p-2">
-                      <img
-                        src={heartImg}
-                        alt=""
-                        className="h-full w-full object-contain"
-                      />
-                    </div>
-
-                    <div className="flex flex-col max-w-40">
-                      <p className="font-medium truncate">
-                        {message?.messageText || "Voice Message"}
-                      </p>
-                      <span className="flex items-center gap-1 text-xs text-gray-500">
-                        {message.ownerUsername === "music" ? (
-                          <div className="bg-transparent rounded-xs p-0.5">
-                            <Music
-                              size="10"
-                              color="#ff8a65"
-                              variant="TwoTone"
-                            />
-                          </div>
-                        ) : (
-                          <div className="bg-transparent rounded-xs p-0.5">
-                            <Text size="10" color="#ff8a65" variant="Bulk" />
-                          </div>
-                        )}
-                        {formatMessageDate(message.createdAt)}
-                      </span>
-                    </div>
-                  </div>
-
-                  <MagicStar
-                    className={`cursor-pointer transition-all duration-200 ease-out hover:scale-110 active:scale-125 motion-reduce:transition-none ${
-                      starredIds.includes(message.id)
-                        ? "drop-shadow-[0_0_6px_rgba(255,184,77,0.85)]"
-                        : ""
-                    }`}
-                    size="32"
-                    color={
-                      starredIds.includes(message.id) ? "#ffb84d" : "#d9e3f0"
-                    }
-                    variant={
-                      starredIds.includes(message.id) ? "Bold" : "TwoTone"
-                    }
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      toggleStar(message.id);
+                  <div
+                    key={message.id}
+                    className="flex  w-full items-center justify-between pl-2 pr-2 pt-0.5 pb-0.5"
+                    onClick={() => {
+                      setSelectedMessage(message);
+                      setIsModalOpen(true);
+                      setClickButton(true);
                     }}
-                  />
-                </div>
+                  >
+                    <div className="flex flex-1 items-center gap-3">
+                      <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#fff3ec] p-2">
+                        <img
+                          src={heartImg}
+                          alt=""
+                          className="h-full w-full object-contain"
+                        />
+                      </div>
+
+                      <div className="flex flex-col max-w-40">
+                        <p className="font-medium truncate">
+                          {message?.messageText || "Voice Message"}
+                        </p>
+                        <span className="flex items-center gap-1 text-xs text-gray-500">
+                          {message.ownerUsername === "music" ? (
+                            <div className="bg-transparent rounded-xs p-0.5">
+                              <Music
+                                size="10"
+                                color="#ff8a65"
+                                variant="TwoTone"
+                              />
+                            </div>
+                          ) : (
+                            <div className="bg-transparent rounded-xs p-0.5">
+                              <Text size="10" color="#ff8a65" variant="Bulk" />
+                            </div>
+                          )}
+                          {formatMessageDate(message.createdAt)}
+                        </span>
+                      </div>
+                    </div>
+
+                    <MagicStar
+                      className={`cursor-pointer transition-all duration-200 ease-out hover:scale-110 active:scale-125 motion-reduce:transition-none ${
+                        starredIds.includes(message.id)
+                          ? "drop-shadow-[0_0_6px_rgba(255,184,77,0.85)]"
+                          : ""
+                      }`}
+                      size="32"
+                      color={
+                        starredIds.includes(message.id) ? "#ffb84d" : "#d9e3f0"
+                      }
+                      variant={
+                        starredIds.includes(message.id) ? "Bold" : "TwoTone"
+                      }
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        toggleStar(message.id);
+                      }}
+                    />
+                  </div>
                 ))
               )}
             </div>
@@ -485,9 +481,7 @@ export default function Dashboard() {
                   src={heartImg}
                   alt=""
                   className={`h-9 w-9 transition-transform duration-300 ease-out hover:scale-125 hover:-rotate-12 motion-reduce:transition-none ${
-                    isSelectedMessageRevealed
-                      ? "scale-110 -rotate-12"
-                      : ""
+                    isSelectedMessageRevealed ? "scale-110 -rotate-12" : ""
                   }`}
                 />
                 <img
@@ -534,7 +528,7 @@ export default function Dashboard() {
                   }}
                 />
               </div>
-              
+
               <div className="rounded-full border border-white/50 bg-white/35 p-1 shadow-sm backdrop-blur-md">
                 <MagicStar
                   className={`cursor-pointer transition-all duration-200 ease-out hover:scale-110 active:scale-125 motion-reduce:transition-none ${

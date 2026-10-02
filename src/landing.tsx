@@ -1,7 +1,7 @@
 import "./App.css";
 import backgroundImage from "./assets/images/backgroundImage.png";
 import logo from "./assets/images/logo.png";
-import { FaArrowRight } from "react-icons/fa";;
+import { FaArrowRight } from "react-icons/fa";
 import { Link } from "react-router";
 
 export default function App() {
@@ -26,7 +26,7 @@ export default function App() {
         <div className="flex w-full flex-1 flex-col items-center justify-center gap-10">
           <div className="flex flex-col items-center gap-2">
             <span className="w-fit rounded-l-2xl rounded-r-2xl bg-[#fff3ec] p-1 text-center outline-0.5 outline-orange-500 pl-1.5 pr-1.5 pt-0.5 pb-0.5">
-              Beta
+              Alpha
             </span>
             <h1 className="text-center text-3xl font-bold sm:text-4xl md:text-6xl text-balance">
               Speak <span className="text-[#f65200]">Anonymously,</span>
@@ -34,7 +34,7 @@ export default function App() {
               Connect Honestly
             </h1>
             <p className="w-full pl-4 pr-4 text-center text-sm font-bold sm:text-base text-balance">
-              Anonymous voice & text messaging with built-in voice masking.
+              Anonymous text messaging.
             </p>
           </div>
 

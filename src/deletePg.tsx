@@ -10,7 +10,7 @@ type DeletePgProps = {
 
 export default function DeletePg(props: DeletePgProps) {
   return (
-<div className="grid min-h-dvh place-items-center p-4">
+    <div className="grid min-h-dvh place-items-center p-4">
       <div className="flex flex-col justify-center items-center bg-white w-80 h-80 gap-8 rounded-2xl">
         <div className="flex flex-col justify-center items-center gap-4">
           <Trash size="60" color="#f47379" variant="TwoTone" />
@@ -20,12 +20,16 @@ export default function DeletePg(props: DeletePgProps) {
           </p>
         </div>
         <div className="flex flex-row gap-2">
-          <button className="bg-linear-to-br from-gray-300 to-gray-500 rounded-4xl p-3 text-white cursor-pointer"
-          onClick={props.onClose}>
+          <button
+            className="bg-linear-to-br from-gray-300 to-gray-500 rounded-4xl p-3 text-white cursor-pointer"
+            onClick={props.onClose}
+          >
             Cancel Action
           </button>
-          <button className="bg-red-600 p-3 rounded-4xl text-white"
-          onClick={props.onConfirm}>
+          <button
+            className="bg-red-600 p-3 rounded-4xl text-white"
+            onClick={props.onConfirm}
+          >
             {props.confirmLabel}
           </button>
         </div>

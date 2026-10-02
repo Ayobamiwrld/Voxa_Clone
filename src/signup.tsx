@@ -24,13 +24,16 @@ export default function SignUp() {
 
   async function dataUpload() {
     try {
-      await fetch("http://localhost:8080/account/register", {
-        method: "POST",
-        headers: {
-          "content-type": "application/JSON",
+      await fetch(
+        "https://voxa-golang-server-547m.onrender.com/account/register",
+        {
+          method: "POST",
+          headers: {
+            "content-type": "application/JSON",
+          },
+          body: JSON.stringify({ username: userName, password }),
         },
-        body: JSON.stringify({ username: userName, password }),
-      });
+      );
       setSuccessfullCreation(true);
     } catch (error) {
       console.log(error);
@@ -118,22 +121,26 @@ export default function SignUp() {
       </div>
 
       {/* Signup form shown on both mobile and desktop */}
-        {successfullCreation ? (
-          <div className="flex justify-center items-center w-full">
+      {successfullCreation ? (
+        <div className="flex justify-center items-center w-full">
           <div className="flex flex-col items-center  gap-8 w-[85%]">
-           <FaCircleCheck className=" text-[#ff7a37] w-15 h-15"/>
+            <FaCircleCheck className=" text-[#ff7a37] w-15 h-15" />
             <div className="flex  flex-col gap-1 justify-center items-center text-balance">
               <h2 className="font-bold text-black text-[30px]">Success</h2>
-              <p className="text-balance">Your account has been created succesfully, continue to login</p>
+              <p className="text-balance">
+                Your account has been created succesfully, continue to login
+              </p>
             </div>
-            <button className=" bg-linear-to-b from-orange-500 to-red-500 p-3.5 rounded-4xl text-white w-[24rem]" 
-            onClick={() => navigate("/signin")}> 
+            <button
+              className=" bg-linear-to-b from-orange-500 to-red-500 p-3.5 rounded-4xl text-white w-[24rem]"
+              onClick={() => navigate("/signin")}
+            >
               Proceed to login
-                </button>
+            </button>
           </div>
-          </div>
-        ) : (
-           <div className=" flex flex-col w-full justify-between items-center mt-6 md:justify-center gap-6">
+        </div>
+      ) : (
+        <div className=" flex flex-col w-full justify-between items-center mt-6 md:justify-center gap-6">
           <div className="inline-flex w-full flex-col justify-center items-center gap-3">
             <img src={logo} alt="Voxa Logo" className="w-28 md:w-32 lg: 32" />
             <div className="flex w-full sm:w-md flex-col justify-center gap-8 px-4">
@@ -237,10 +244,14 @@ export default function SignUp() {
                   type="submit"
                   disabled={accountCreation ? true : false}
                 >
-                  {accountCreation ? (<span
-                    aria-hidden="true"
-                    className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
-                  />) : "Create Account"}
+                  {accountCreation ? (
+                    <span
+                      aria-hidden="true"
+                      className="h-5 w-5 animate-spin rounded-full border-2 border-white/40 border-t-white motion-reduce:animate-none"
+                    />
+                  ) : (
+                    "Create Account"
+                  )}
                 </button>
               </form>
               <div className="flex flex-row gap-4 justify-center">
@@ -251,17 +262,16 @@ export default function SignUp() {
               </div>
             </div>
           </div>
-           {successfullCreation ? (
-          ""
-        ) : (
-          <footer className="text-center text-balance p-3 text-[17px]">
-            By using Voxa, you agree to our Terms of service
-            and privacy policy
-          </footer>
-        )}
-          </div>
-        )}
-      
-      </div>
+          {successfullCreation ? (
+            ""
+          ) : (
+            <footer className="text-center text-balance p-3 text-[17px]">
+              By using Voxa, you agree to our Terms of service and privacy
+              policy
+            </footer>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
