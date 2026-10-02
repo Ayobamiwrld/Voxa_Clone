@@ -240,7 +240,7 @@ export default function SignUp() {
                   </button>
                 </div>
                 <button
-                  className="w-full rounded-3xl bg-linear-to-b from-orange-500 to-red-500 p-2.5 text-[1.2rem] text-white mt-4"
+                  className="w-full rounded-3xl bg-linear-to-b from-orange-500 to-red-500 p-2.5 text-[1.2rem] text-white mt-4 cursor-pointer"
                   type="submit"
                   disabled={accountCreation ? true : false}
                 >
