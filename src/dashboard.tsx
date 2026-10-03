@@ -119,7 +119,7 @@ export default function Dashboard() {
   function handleCopy() {
     console.log(currentUser);
     window.navigator.clipboard.writeText(
-      `localhost:5173/send-message/${currentUser?.username as string}`,
+      `https://voxa-golang-server-547m.onrender.com/send-message/${currentUser?.username as string}`,
     );
     toast.success("link copied !", {
       position: "top-center",
