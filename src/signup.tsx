@@ -2,7 +2,7 @@ import logo from "./assets/images/logo.png";
 import genz from "./assets/images/gen_z/genz.png";
 import gen_z1 from "./assets/images/gen_z/gen_z1.png";
 import gen_z2 from "./assets/images/gen_z/gen_z2.png";
-import img from "./assets/images/gen_z/img.png";
+import image from "./assets/images/gen_z/image.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { IoEyeOutline } from "react-icons/io5";
@@ -90,7 +90,7 @@ export default function SignUp() {
             </h5>
             <p className="text-mist-400 text-base text-center text-balance">
               {" "}
-              You can send and recieve  text
+              You can send and recieve text
             </p>
           </div>
           <div className="flex flex-col justify-center items-center ">
@@ -112,7 +112,7 @@ export default function SignUp() {
               />
             </div>
             <img
-              src={img}
+              src={image}
               alt=""
               className="relative left-20 -top-12 z-4 w-[18rem] min-[1200px]:hidden "
             />
@@ -146,7 +146,7 @@ export default function SignUp() {
             <div className="flex w-full sm:w-md flex-col justify-center gap-8 px-4">
               <div className=" flex flex-col justify-center items-center gap-1.5">
                 <h5 className="text-4xl font-bold">Create Memories</h5>
-                <p className="text-[14px] text-mist-400">
+                <p className="text-[14px] text-mist-400 text-center text-balance">
                   You can create a new account or Sign-in to continue
                 </p>
               </div>
