@@ -116,22 +116,24 @@ export default function Dashboard() {
   useEffect(() => {
     dashboardAuth();
   }, []);
-  function handleCopy() {
-    console.log(currentUser);
-    window.navigator.clipboard.writeText(
-      `https://voxa-golang-server-547m.onrender.com/send-message/${currentUser?.username as string}`,
-    );
-    toast.success("link copied !", {
-      position: "top-center",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-      transition: Bounce,
-    });
+  async function handleCopy() {
+    const username = currentUser?.username;
+    if (!username) {
+      toast.error("Your user details are not ready yet.");
+      return;
+    }
+
+    const link = `${window.location.origin}/send-message/${encodeURIComponent(username)}`;
+    try {
+      await navigator.clipboard.writeText(link);
+      toast.success("Link copied!", {
+        position: "top-center",
+        transition: Bounce,
+      });
+    } catch (error) {
+      console.error("Failed to copy message link:", error);
+      toast.error("Could not copy link. Please try again.");
+    }
   }
   async function deleteMessage(id: string) {
     const token = localStorage.getItem("voxaToken");
