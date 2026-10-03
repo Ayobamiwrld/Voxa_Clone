@@ -149,7 +149,7 @@ export default function SignIn() {
           <div className="flex w-full sm:w-md flex-col justify-center gap-8 px-4">
             <div className=" flex flex-col justify-center items-center gap-1.5">
               <h5 className="text-4xl font-bold">Welcome Back</h5>
-              <p className="text-[14px] text-mist-400">
+              <p className="text-[14px] text-mist-400 text-center text-balance">
                 You can create a new account or Sign-in to continue
               </p>
             </div>
