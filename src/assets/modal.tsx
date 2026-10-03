@@ -31,13 +31,15 @@ export default function Modalpg(props:ModalpgProps) {
         <CloseSquare size="32" color="#ff8a65" variant="Bulk" />
       </div>
 
-      <div className="flex flex-col  h-screen items-center justify-evenly gap-10">
-        <div className="h-40 w-72 rounded-3xl bg-white" >
-            <div className="flex flex-row justify-between p-3">
-                <img src={heartImg} alt="" className="h-9 w-9" />
-                <img src={logo} alt="" className="w-20 blur-[2px]" />
-              </div>
-              <div className="text-center mt-4">{props.selectedMessages.messageText}</div>
+      <div className="flex max-h-[calc(100dvh-2rem)] w-full flex-col items-center justify-center gap-8 overflow-y-auto py-4">
+        <div className="flex min-h-40 max-h-[70dvh] w-72 flex-col overflow-hidden rounded-3xl bg-white">
+          <div className="flex shrink-0 flex-row justify-between p-3">
+            <img src={heartImg} alt="" className="h-9 w-9" />
+            <img src={logo} alt="" className="w-20 blur-[2px]" />
+          </div>
+          <div className="mt-4 max-h-[calc(70dvh-5rem)] overflow-y-auto wrap-break-word px-3 pb-3 text-center">
+            {props.selectedMessages.messageText}
+          </div>
         </div>
 
         <div className="flex items-center justify-center gap-4">

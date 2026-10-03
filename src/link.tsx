@@ -102,7 +102,7 @@ export default function Link() {
             <p className="text-[10px] text-red-700 mt-1">{messageError}</p>
           )}
           <button
-            className="mt-4 flex w-[24rem] items-center justify-center gap-2 rounded-3xl bg-linear-to-b from-orange-500 to-red-600 p-2.5 text-center text-[1.2rem] font-bold text-white disabled:cursor-wait lg:w-[30%]"
+            className="mt-4 flex w-[20rem] items-center justify-center gap-2 rounded-3xl bg-linear-to-b from-orange-500 to-red-600 p-2.5 text-center text-[1.2rem] font-bold text-white disabled:cursor-wait lg:w-[30%]"
             type="submit"
             disabled={sendingMessage}
             aria-busy={sendingMessage}
