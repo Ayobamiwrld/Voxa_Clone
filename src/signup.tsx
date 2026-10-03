@@ -2,7 +2,7 @@ import logo from "./assets/images/logo.png";
 import genz from "./assets/images/gen_z/genz.png";
 import gen_z1 from "./assets/images/gen_z/gen_z1.png";
 import gen_z2 from "./assets/images/gen_z/gen_z2.png";
-import img from "./assets/images/gen_z/image.png";
+import img from "./assets/images/gen_z/img.png";
 import { useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { IoEyeOutline } from "react-icons/io5";
