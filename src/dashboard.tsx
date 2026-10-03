@@ -478,14 +478,14 @@ export default function Dashboard() {
           </div>
         ) : (
           <>
-            <div className="flex h-40 w-80 flex-col rounded-xl bg-white">
+            <div className="flex min-h-40 max-h-128 w-80 flex-col overflow-hidden rounded-xl bg-white">
               <div
                 className="absolute right-5 top-5 z-10 cursor-pointer"
                 onClick={() => setClickButton(false)}
               >
                 <CloseSquare size="32" color="#ff8a65" variant="Bulk" />
               </div>
-              <div className="flex flex-row justify-between p-3">
+              <div               className="flex shrink-0 flex-row justify-between p-3">
                 <img
                   src={heartImg}
                   alt=""
@@ -516,7 +516,7 @@ export default function Dashboard() {
                     : "Click to reveal"
                 }
                 onClick={() => setRevealedMessageId(selectedMessage.id)}
-                className={`mt-4 w-full cursor-pointer px-3 text-center transition-all duration-500 ease-out motion-reduce:transition-none ${
+                className={`mt-4 max-h-96 w-full cursor-pointer overflow-y-auto px-3 text-center wrap-break-word transition-all duration-500 ease-out motion-reduce:transition-none ${
                   isSelectedMessageRevealed
                     ? "opacity-100 blur-0"
                     : "opacity-60 blur-[5px]"
